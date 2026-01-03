@@ -92,7 +92,7 @@ export const DashboardStats: React.FC = () => {
         <StatCard
           title="Total Revenue"
           value={formatCurrency(stats.overview.totalRevenue)}
-          change="+12.5% from last month"
+          //change="+12.5% from last month"
           changeType="positive"
           icon={
             <svg
@@ -113,7 +113,7 @@ export const DashboardStats: React.FC = () => {
         <StatCard
           title="Total Sales"
           value={stats.overview.totalSales.toLocaleString()}
-          change="+8.2% from last month"
+          //change="+8.2% from last month"
           changeType="positive"
           icon={
             <svg
@@ -168,7 +168,7 @@ export const DashboardStats: React.FC = () => {
               <Line
                 type="monotone"
                 dataKey="sales"
-                stroke="#0ea5e9"
+                stroke="#0ea5e9ff"
                 strokeWidth={2}
                 name="Sales"
               />

@@ -6,10 +6,8 @@ export interface IProduct {
   description: string;
   price: number;
   compareAtPrice?: number;
-  cost: number;
   sku: string;
   category: string;
-  tags: string[];
   stockQuantity: number;
   lowStockThreshold: number;
   images: string[];
@@ -41,11 +39,6 @@ const ProductSchema = new Schema<IProduct>(
       type: Number,
       min: [0, 'Compare price cannot be negative'],
     },
-    cost: {
-      type: Number,
-      required: [true, 'Cost is required'],
-      min: [0, 'Cost cannot be negative'],
-    },
     sku: {
       type: String,
       required: [true, 'SKU is required'],
@@ -56,10 +49,6 @@ const ProductSchema = new Schema<IProduct>(
       type: String,
       required: [true, 'Category is required'],
       trim: true,
-    },
-    tags: {
-      type: [String],
-      default: [],
     },
     stockQuantity: {
       type: Number,

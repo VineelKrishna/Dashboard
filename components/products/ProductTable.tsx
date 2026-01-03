@@ -164,8 +164,17 @@ export const ProductTable: React.FC = () => {
                         {product.category}
                       </span>
                     </td>
-                    <td className="py-4 px-4 text-gray-700">
-                      {formatCurrency(product.price)}
+                    <td className="py-4 px-4">
+                      <div className="flex flex-col">
+                        <span className="text-gray-900 font-medium">
+                          {formatCurrency(product.price)}
+                        </span>
+                        {product.compareAtPrice != null && product.compareAtPrice > 0 && (
+                          <span className="text-sm text-gray-500 line-through">
+                            {formatCurrency(product.compareAtPrice)}
+                          </span>
+                        )}
+                      </div>
                     </td>
                     <td className="py-4 px-4">
                       <span

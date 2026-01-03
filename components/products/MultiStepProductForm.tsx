@@ -47,11 +47,9 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
     name: '',
     description: '',
     category: '',
-    tags: [],
     sku: '',
     price: 0,
     compareAtPrice: 0,
-    cost: 0,
     stockQuantity: 0,
     lowStockThreshold: 10,
     images: [],
@@ -120,10 +118,7 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
     }
   };
 
-  const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const tags = e.target.value.split(',').map((tag) => tag.trim());
-    setFormData((prev) => ({ ...prev, tags }));
-  };
+
 
   const validateStep = (stepNumber: number) => {
     setErrors({});
@@ -134,14 +129,12 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
           name: formData.name,
           description: formData.description,
           category: formData.category,
-          tags: formData.tags,
           sku: formData.sku,
         });
       } else if (stepNumber === 2) {
         productPricingSchema.parse({
           price: formData.price,
           compareAtPrice: formData.compareAtPrice,
-          cost: formData.cost,
           stockQuantity: formData.stockQuantity,
           lowStockThreshold: formData.lowStockThreshold,
         });
@@ -284,14 +277,6 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
                 />
               </div>
 
-              <Input
-                label="Tags"
-                name="tags"
-                value={formData.tags.join(', ')}
-                onChange={handleTagsChange}
-                placeholder="Enter tags separated by commas"
-                helperText="e.g., new, featured, sale"
-              />
             </div>
           )}
 
@@ -302,7 +287,7 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
                 Pricing & Inventory
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
                   label="Price"
                   name="price"
@@ -325,18 +310,6 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
                   error={errors.compareAtPrice}
                   placeholder="0.00"
                   helperText="Original price (for sale items)"
-                />
-
-                <Input
-                  label="Cost"
-                  name="cost"
-                  type="number"
-                  step="0.01"
-                  value={formData.cost}
-                  onChange={handleChange}
-                  error={errors.cost}
-                  required
-                  placeholder="0.00"
                 />
               </div>
 
@@ -364,17 +337,7 @@ export const MultiStepProductForm: React.FC<MultiStepProductFormProps> = ({
                 />
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="font-medium text-gray-900 mb-2">Profit Margin</h3>
-                <p className="text-2xl font-bold text-green-600">
-                  {formData.price && formData.cost
-                    ? `$${(formData.price - formData.cost).toFixed(2)} (${(
-                        ((formData.price - formData.cost) / formData.price) *
-                        100
-                      ).toFixed(1)}%)`
-                    : '$0.00'}
-                </p>
-              </div>
+
             </div>
           )}
 
