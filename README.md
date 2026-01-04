@@ -2,6 +2,12 @@
 
 A modern, full-featured administrative dashboard for managing e-commerce products. Built with Next.js 14, MongoDB Atlas, and Cloudinary for a complete cloud-based solution.
 
+## 🚀 Demo & Live Links
+
+[![Demo Video](https://img.shields.io/badge/Demo-Video-red)](https://drive.google.com/file/d/1xqF2msOWGYDs7JPJmOPUVc8Y_HnSoIwh/view?usp=sharing)
+[![Live Site](https://img.shields.io/badge/Live-Deployed-green)](https://dashboard-seven-fawn-26.vercel.app/)
+
+
 ## Features
 
 - **Complete Product Management** - Create, read, update, and delete products with ease
